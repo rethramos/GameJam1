@@ -36074,7 +36074,7 @@ PrefabInstance:
       objectReference: {fileID: 1666905511}
     - target: {fileID: 1764505200522814987, guid: b09bde6e614a2d84bb208e59da15970d, type: 3}
       propertyPath: m_Name
-      value: Maze
+      value: MazePau
       objectReference: {fileID: 0}
     - target: {fileID: 1764505200522814988, guid: b09bde6e614a2d84bb208e59da15970d, type: 3}
       propertyPath: m_RootOrder
