@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
+    [SerializeField] private CharacterController controller;
 
-    public float speed = 12f;
-    public float gravity = -9.81f;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float gravity = -9.8f;
 
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
-    public float jumpHeight = 3f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundDistance = 0.4f;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private float jumpHeight = 2f;
 
-    Vector3 velocity;
-    bool isGrounded;
+    private Vector3 velocity;
+    private bool isGrounded;
+
+    // Implement this OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        
+        Debug.Log(isGrounded);
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
