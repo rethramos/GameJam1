@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 1173209963378833814}
   m_Layer: 0
   m_Name: ThirdPersonPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +216,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  jumpHeight: 2
+  jumpHeight: 3
+  startTransform: {fileID: 0}
 --- !u!1001 &3724623273799421345
 PrefabInstance:
   m_ObjectHideFlags: 0

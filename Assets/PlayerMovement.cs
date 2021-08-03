@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float groundDistance = 0.4f;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float jumpHeight = 2f;
+    [SerializeField] private Transform startTransform;
 
     private Vector3 velocity;
     private bool isGrounded;
@@ -23,11 +24,23 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
     }
 
+    // OnTriggerEnter is called when the Collider other enters the trigger
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            // temporarily disable character controller to teleport character
+            controller.enabled = false;
+            transform.position = startTransform.position;
+            controller.enabled = true;
+            Debug.Log(other.ToString());
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -35,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -48,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
 
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
