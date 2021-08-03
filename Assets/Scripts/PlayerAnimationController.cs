@@ -16,9 +16,9 @@ public class PlayerAnimationController : MonoBehaviour
     void Update()
     {
         float z = Input.GetAxis("Vertical");
-        anim.SetFloat("vertical", z);
         float x = Input.GetAxis("Horizontal");
+        anim.SetFloat("vertical", z);
         anim.SetFloat("horizontal", x);
-        Debug.Log("V: " + z + " H: " + x);
+        //Debug.Log("V: " + z + " H: " + x);
     }
 }
