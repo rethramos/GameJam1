@@ -27,14 +27,15 @@ public class PlayerMovement : MonoBehaviour
     // OnTriggerEnter is called when the Collider other enters the trigger
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.ToString());
         if (other.CompareTag("Enemy"))
         {
             // temporarily disable character controller to teleport character
             controller.enabled = false;
             transform.position = startTransform.position;
             controller.enabled = true;
-            Debug.Log(other.ToString());
         }
+        
     }
 
     // Start is called before the first frame update
