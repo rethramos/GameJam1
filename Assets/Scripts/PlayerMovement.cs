@@ -17,24 +17,40 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 velocity;
     private bool isGrounded;
+    private EventBroadcaster eb = EventBroadcaster.Instance;
 
     // Implement this OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn
     private void OnDrawGizmos()
     {
+        // just to check how the ground check looks like
         Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
     }
 
     // OnTriggerEnter is called when the Collider other enters the trigger
     private void OnTriggerEnter(Collider other)
     {
+        //Debug.Log(other.ToString());
         if (other.CompareTag("Enemy"))
         {
             // temporarily disable character controller to teleport character
             controller.enabled = false;
             transform.position = startTransform.position;
             controller.enabled = true;
-            Debug.Log(other.ToString());
         }
+        else if (other.CompareTag("Powerup"))
+        {
+            Debug.Log("from ontrigger Powerup");
+            if (other.GetComponent<FreezePowerupController>() != null)
+            {
+                Debug.Log("Freeze found");
+                eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
+            }
+            else
+            {
+                Debug.Log("Freeze not found");
+            }
+        }
+        Debug.Log("collided with: " + other);
     }
 
     // Start is called before the first frame update
