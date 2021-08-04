@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26faef2900a74594d809405a31ea3ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 7568517112756900180}
+  animator: {fileID: 7568517112756900180}
 --- !u!1001 &6247754456936553244
 PrefabInstance:
   m_ObjectHideFlags: 0
