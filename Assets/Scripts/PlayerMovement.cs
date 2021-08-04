@@ -14,14 +14,34 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private Transform startTransform;
+    [SerializeField] private GameObject image;
+    public int count = 0;
 
     private Vector3 velocity;
     private bool isGrounded;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+            StartCoroutine(Wait());
+
+    }
+    //TODO: FIX WAIT - Need to disable power up text 
+    IEnumerator Wait()
+    {
+        if (count == 1)
+        {
+            Debug.Log("Wait");
+            yield return new WaitForSeconds(2);
+            image.SetActive(false);
+        }
+    }
 
     // Implement this OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
+        image.SetActive(false);
     }
 
     // OnTriggerEnter is called when the Collider other enters the trigger
@@ -35,13 +55,16 @@ public class PlayerMovement : MonoBehaviour
             controller.enabled = true;
             Debug.Log(other.ToString());
         }
+        if (other.CompareTag("PowerUp"))
+        {
+            Destroy(other.gameObject);
+            image.SetActive(true);
+            count = 1;
+            Debug.Log(count);
+        }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
 
     // Update is called once per frame
     void FixedUpdate()
