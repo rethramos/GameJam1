@@ -12,9 +12,10 @@ public class FreezePowerupController : MonoBehaviour
         eb.AddObserver(EventNames.PowerupEvents.ON_FREEZE_COLLECT, OnCollect);
     }
 
-    private void OnTriggerEnter(Collider other)
+    // This function is called when the MonoBehaviour will be destroyed
+    private void OnDestroy()
     {
-        //Debug.Log(other.ToString());
+        eb.RemoveObserver(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
     }
 
 
@@ -32,7 +33,7 @@ public class FreezePowerupController : MonoBehaviour
     // Observer for when a player collects this powerup
     private void OnCollect()
     {
-        Debug.Log(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
+        Debug.Log("from freezepowerupcont: " + EventNames.PowerupEvents.ON_FREEZE_COLLECT);
         gameObject.SetActive(false);
     }
 }

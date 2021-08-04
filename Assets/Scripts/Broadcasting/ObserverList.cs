@@ -51,7 +51,7 @@ public class ObserverList {
 	public void NotifyObservers() {
 		for(int i = 0; i < this.eventListenersNoParams.Count; i++) {
 			System.Action action = this.eventListenersNoParams[i];
-
+			Debug.Log("from notify observers: " + action.ToString());
 			action();
 		}
 	}
