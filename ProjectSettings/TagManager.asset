@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Powerup:Freeze
+<<<<<<< HEAD
+=======
+  - PowerUp
+>>>>>>> main
   layers:
   - Default
   - TransparentFX

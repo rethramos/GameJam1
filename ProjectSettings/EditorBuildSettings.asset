@@ -9,12 +9,28 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 3da0ec53ef47a4371be43d11f4cb0fbc
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/Maze.unity
     guid: dd558342ecebc4ca6bbc9add03563a1b
+=======
+    path: Assets/Scenes/Credits.unity
+    guid: e02da0d3c29e94a84926171a8e9a5cfd
+>>>>>>> main
   - enabled: 1
     path: Assets/Scenes/HowToPlay.unity
     guid: 9d2dea000e0144efb920af32d0596eb2
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/Credits.unity
     guid: e02da0d3c29e94a84926171a8e9a5cfd
+=======
+    path: Assets/Scenes/Maze.unity
+    guid: dd558342ecebc4ca6bbc9add03563a1b
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/SceneReth.unity
+    guid: b03d026e4d1b3bc4d85c51e1dd7d357c
+>>>>>>> main
   m_configObjects: {}

@@ -21,7 +21,11 @@ public class Inventory
         eb.AddObserver(EventNames.PowerupEvents.ON_HINT_USE, OnHintUse);
 
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> main
 
     public static Inventory Instance
     {
@@ -72,4 +76,8 @@ public class Inventory
 
     public int HintCounter { get; set; }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main
