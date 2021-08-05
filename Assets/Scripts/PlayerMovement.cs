@@ -38,28 +38,14 @@ public class PlayerMovement : MonoBehaviour
             transform.position = startTransform.position;
             controller.enabled = true;
         }
-        else if (other.CompareTag("Powerup"))
+        else if (other.CompareTag("Powerup:Freeze"))
         {
             Debug.Log("from ontrigger Powerup");
-            if (other.GetComponent<FreezePowerupController>() != null)
-            {
-                Debug.Log("Freeze found");
-
-                Parameters p = new Parameters();
-
-                p.PutObjectExtra("collected", other);
-
-                // for powerup observer (FreezePowerupController)
-                eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT, p);
-
-                // for inventory observer (Inventory) note there is no 'p' here
-                eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
-
-            }
-            else
-            {
-                Debug.Log("Freeze not found");
-            }
+            Debug.Log("Freeze found");
+            other.gameObject.SetActive(false);
+            
+            eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
+            
         }
         Debug.Log("collided with: " + other);
     }

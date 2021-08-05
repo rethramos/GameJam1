@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class FreezePowerupController : MonoBehaviour
 {
-    [SerializeField] Collider ownCollider;
-    private EventBroadcaster eb = EventBroadcaster.Instance;
+    //[SerializeField] Collider ownCollider;
+    //private EventBroadcaster eb = EventBroadcaster.Instance;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
     {
-        eb.AddObserver(EventNames.PowerupEvents.ON_FREEZE_COLLECT, OnCollect);
+        //eb.AddObserver(EventNames.PowerupEvents.ON_FREEZE_COLLECT, OnCollect);
     }
 
     // This function is called when the MonoBehaviour will be destroyed
     private void OnDestroy()
     {
-        eb.RemoveObserver(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
+        //eb.RemoveObserver(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
     }
 
 
@@ -32,15 +32,15 @@ public class FreezePowerupController : MonoBehaviour
     }
 
     // Observer for when a player collects this powerup
-    private void OnCollect(Parameters p)
-    {
-        Collider picked = (Collider)p.GetObjectExtra("collected");
-        Debug.Log("collected: " + picked.ToString() + "own: " + ownCollider.ToString());
-        if (Collider.ReferenceEquals(picked, ownCollider))
-        {
+    //private void OnCollect(Parameters p)
+    //{
+    //    Collider picked = (Collider)p.GetObjectExtra("collected");
+    //    Debug.Log("collected: " + picked.ToString() + "own: " + ownCollider.ToString());
+    //    if (Collider.ReferenceEquals(picked, ownCollider))
+    //    {
 
-            Debug.Log("from freezepowerupcont: " + EventNames.PowerupEvents.ON_FREEZE_COLLECT);
-            ownCollider.gameObject.SetActive(false);
-        }
-    }
+    //        Debug.Log("from freezepowerupcont: " + EventNames.PowerupEvents.ON_FREEZE_COLLECT);
+    //        ownCollider.gameObject.SetActive(false);
+    //    }
+    //}
 }
