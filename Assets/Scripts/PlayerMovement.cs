@@ -25,26 +25,26 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
 
     }
     //TODO: FIX WAIT - Need to disable power up text 
-    IEnumerator Wait()
-    {
-        if (count == 1)
-        {
-            Debug.Log("Wait");
-            yield return new WaitForSeconds(2);
-            image.SetActive(false);
-        }
-    }
+    //IEnumerator Wait()
+    //{
+    //    if (count == 1)
+    //    {
+    //        Debug.Log("Wait");
+    //        yield return new WaitForSeconds(2);
+    //        image.SetActive(false);
+    //    }
+    //}
 
     // Implement this OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn
     private void OnDrawGizmos()
     {
         // just to check how the ground check looks like
         Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
-        image.SetActive(false);
+        //image.SetActive(false);
     }
 
     // OnTriggerEnter is called when the Collider other enters the trigger
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        //Debug.Log(isGrounded);
+        Debug.Log(isGrounded);
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -92,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 

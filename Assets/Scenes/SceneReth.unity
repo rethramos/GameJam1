@@ -841,17 +841,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3924563769627780323, guid: b1d3aa26dd7132842b1ac3af92ba5ae1, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4348137904099729370, guid: b1d3aa26dd7132842b1ac3af92ba5ae1, type: 3}
       propertyPath: m_Name
       value: Terrain
-      objectReference: {fileID: 0}
-    - target: {fileID: 4348137904099729370, guid: b1d3aa26dd7132842b1ac3af92ba5ae1, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7921873774689830192, guid: b1d3aa26dd7132842b1ac3af92ba5ae1, type: 3}
       propertyPath: m_RootOrder
