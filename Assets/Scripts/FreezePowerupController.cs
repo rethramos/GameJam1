@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FreezePowerupController : MonoBehaviour
 {
+    [SerializeField] Collider ownCollider;
     private EventBroadcaster eb = EventBroadcaster.Instance;
 
     // Awake is called when the script instance is being loaded
@@ -27,13 +28,19 @@ public class FreezePowerupController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Observer for when a player collects this powerup
-    private void OnCollect()
+    private void OnCollect(Parameters p)
     {
-        Debug.Log("from freezepowerupcont: " + EventNames.PowerupEvents.ON_FREEZE_COLLECT);
-        gameObject.SetActive(false);
+        Collider picked = (Collider)p.GetObjectExtra("collected");
+        Debug.Log("collected: " + picked.ToString() + "own: " + ownCollider.ToString());
+        if (Collider.ReferenceEquals(picked, ownCollider))
+        {
+
+            Debug.Log("from freezepowerupcont: " + EventNames.PowerupEvents.ON_FREEZE_COLLECT);
+            ownCollider.gameObject.SetActive(false);
+        }
     }
 }

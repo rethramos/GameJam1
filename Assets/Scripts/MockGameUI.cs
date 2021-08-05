@@ -23,7 +23,7 @@ public class MockGameUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string test = $"Freeze: {inventory.FreezeCounter} Hints: {inventory.HintCounter} Jumps: {inventory.JumpCounter}";
+        string test = $"Jumps: {inventory.JumpCounter} Freeze: {inventory.FreezeCounter} Hints: {inventory.HintCounter}";
         text.text = test;
     }
 

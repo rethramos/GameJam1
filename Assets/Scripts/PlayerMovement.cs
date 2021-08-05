@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
     private EventBroadcaster eb = EventBroadcaster.Instance;
+    private Inventory inventory = Inventory.Instance;
 
     // Implement this OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn
     private void OnDrawGizmos()
@@ -43,7 +44,17 @@ public class PlayerMovement : MonoBehaviour
             if (other.GetComponent<FreezePowerupController>() != null)
             {
                 Debug.Log("Freeze found");
+
+                Parameters p = new Parameters();
+
+                p.PutObjectExtra("collected", other);
+
+                // for powerup observer (FreezePowerupController)
+                eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT, p);
+
+                // for inventory observer (Inventory) note there is no 'p' here
                 eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
+
             }
             else
             {
@@ -85,5 +96,33 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+    }
+
+    // Update is called every frame, if the MonoBehaviour is enabled
+    private void Update()
+    {
+        ListenToPowerupUse();
+    }
+
+
+    // powerup mapping: 1 - jump, 2 - freeze, 3 - hint
+    private void ListenToPowerupUse()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && inventory.JumpCounter > 0)
+        {
+            Debug.Log("1 is pressed");
+            eb.PostEvent(EventNames.PowerupEvents.ON_JUMP_USE);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) && inventory.FreezeCounter > 0)
+        {
+            Debug.Log("2 is pressed");
+            eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_USE);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && inventory.HintCounter > 0)
+        {
+            Debug.Log("3 is pressed");
+            eb.PostEvent(EventNames.PowerupEvents.ON_HINT_USE);
+
+        }
     }
 }

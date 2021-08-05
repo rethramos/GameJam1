@@ -12,23 +12,16 @@ public class Inventory
     private Inventory()
     {
         eb = EventBroadcaster.Instance;
+        eb.AddObserver(EventNames.PowerupEvents.ON_JUMP_COLLECT, OnJumpCollect);
         eb.AddObserver(EventNames.PowerupEvents.ON_FREEZE_COLLECT, OnFreezeCollect);
         eb.AddObserver(EventNames.PowerupEvents.ON_HINT_COLLECT, OnHintCollect);
-        eb.AddObserver(EventNames.PowerupEvents.ON_JUMP_COLLECT, OnJumpCollect);
-    }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
+        eb.AddObserver(EventNames.PowerupEvents.ON_JUMP_USE, OnJumpUse);
+        eb.AddObserver(EventNames.PowerupEvents.ON_FREEZE_USE, OnFreezeUse);
+        eb.AddObserver(EventNames.PowerupEvents.ON_HINT_USE, OnHintUse);
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 
     public static Inventory Instance
     {
@@ -42,18 +35,35 @@ public class Inventory
             return _instance;
         }
     }
-    private void OnFreezeCollect()
-    {
-        FreezeCounter++;
-    }
+
     private void OnJumpCollect()
     {
         JumpCounter++;
     }
 
+    private void OnFreezeCollect()
+    {
+        FreezeCounter++;
+    }
+
     private void OnHintCollect()
     {
         HintCounter++;
+    }
+
+    private void OnJumpUse()
+    {
+        JumpCounter--;
+    }
+
+    private void OnFreezeUse()
+    {
+        FreezeCounter--;
+    }
+
+    private void OnHintUse()
+    {
+        HintCounter--;
     }
 
     public int FreezeCounter { get; set; }
