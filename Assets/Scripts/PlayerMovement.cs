@@ -20,30 +20,31 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
     private EventBroadcaster eb = EventBroadcaster.Instance;
+    private Inventory inventory = Inventory.Instance;
 
     // Start is called before the first frame update
     void Start()
     {
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
 
     }
     //TODO: FIX WAIT - Need to disable power up text 
-    IEnumerator Wait()
-    {
-        if (count == 1)
-        {
-            Debug.Log("Wait");
-            yield return new WaitForSeconds(2);
-            image.SetActive(false);
-        }
-    }
+    //IEnumerator Wait()
+    //{
+    //    if (count == 1)
+    //    {
+    //        Debug.Log("Wait");
+    //        yield return new WaitForSeconds(2);
+    //        image.SetActive(false);
+    //    }
+    //}
 
     // Implement this OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn
     private void OnDrawGizmos()
     {
         // just to check how the ground check looks like
         Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
-        image.SetActive(false);
+        //image.SetActive(false);
     }
 
     // OnTriggerEnter is called when the Collider other enters the trigger
@@ -57,18 +58,14 @@ public class PlayerMovement : MonoBehaviour
             transform.position = startTransform.position;
             controller.enabled = true;
         }
-        else if (other.CompareTag("Powerup"))
+        else if (other.CompareTag("Powerup:Freeze"))
         {
             Debug.Log("from ontrigger Powerup");
-            if (other.GetComponent<FreezePowerupController>() != null)
-            {
-                Debug.Log("Freeze found");
-                eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
-            }
-            else
-            {
-                Debug.Log("Freeze not found");
-            }
+            Debug.Log("Freeze found");
+            other.gameObject.SetActive(false);
+            
+            eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
+            
         }
         Debug.Log("collided with: " + other);
     }
@@ -80,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        //Debug.Log(isGrounded);
+        Debug.Log(isGrounded);
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -95,11 +92,40 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+    }
+
+    // Update is called every frame, if the MonoBehaviour is enabled
+    private void Update()
+    {
+        ListenToPowerupUse();
+    }
+
+
+    // powerup mapping: 1 - jump, 2 - freeze, 3 - hint
+    private void ListenToPowerupUse()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && inventory.JumpCounter > 0)
+        {
+            Debug.Log("1 is pressed");
+            eb.PostEvent(EventNames.PowerupEvents.ON_JUMP_USE);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) && inventory.FreezeCounter > 0)
+        {
+            Debug.Log("2 is pressed");
+            eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_USE);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && inventory.HintCounter > 0)
+        {
+            Debug.Log("3 is pressed");
+            eb.PostEvent(EventNames.PowerupEvents.ON_HINT_USE);
+
+        }
     }
 }
