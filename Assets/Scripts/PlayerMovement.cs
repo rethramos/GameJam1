@@ -86,6 +86,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("finish point collided");
             eb.PostEvent(EventNames.LevelEvents.ON_LEVEL_END);
+        } else if (other.CompareTag("Finish:Game"))
+        {
+            Debug.Log("finish game");
+            eb.PostEvent(EventNames.LevelEvents.ON_GAME_END);
         }
         Debug.Log("collided with: " + other);
     }

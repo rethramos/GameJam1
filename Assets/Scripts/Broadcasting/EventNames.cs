@@ -28,6 +28,7 @@ public class EventNames
     {
         public const string ON_LEVEL_START = "ON_LEVEL_START";
         public const string ON_LEVEL_END = "ON_LEVEL_END";
+        public const string ON_GAME_END = "ON_GAME_END";
     }
 
 }

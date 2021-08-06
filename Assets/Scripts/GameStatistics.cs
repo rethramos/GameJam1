@@ -39,6 +39,12 @@ public static class GameStatistics
         Debug.Log($"level end: {CurrentLevel}"); 
     }
 
+    public static void OnGameEnd()
+    {
+        _levelDurations[CurrentLevel, 1] = DateTime.Now;
+        Debug.Log($"level end: {CurrentLevel}");
+    }
+
     public static double GetDuration(int level)
     {
         Debug.Log(level);

@@ -12,12 +12,14 @@ public class GameStatisticsManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         eb.AddObserver(EventNames.LevelEvents.ON_LEVEL_START, OnLevelStart);
         eb.AddObserver(EventNames.LevelEvents.ON_LEVEL_END, OnLevelEnd);
+        eb.AddObserver(EventNames.LevelEvents.ON_GAME_END, OnGameEnd);
     }
 
     private void OnDestroy()
     {
         eb.RemoveActionAtObserver(EventNames.LevelEvents.ON_LEVEL_START, OnLevelStart);
         eb.RemoveActionAtObserver(EventNames.LevelEvents.ON_LEVEL_END, OnLevelEnd);
+        eb.RemoveActionAtObserver(EventNames.LevelEvents.ON_GAME_END, OnGameEnd);
     }
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,11 @@ public class GameStatisticsManager : MonoBehaviour
     }
 
     private void OnLevelEnd()
+    {
+        GameStatistics.OnLevelEnd();
+    }
+
+    private void OnGameEnd()
     {
         GameStatistics.OnLevelEnd();
     }
