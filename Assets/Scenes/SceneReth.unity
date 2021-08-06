@@ -2133,7 +2133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2421733071464657148, guid: c4d4767470a3d884680b0816fb791ecd, type: 3}
       propertyPath: nextLevelName
-      value: SampleScene
+      value: ScenePau
       objectReference: {fileID: 0}
     - target: {fileID: 3317333870784854838, guid: c4d4767470a3d884680b0816fb791ecd, type: 3}
       propertyPath: m_Name
@@ -3741,7 +3741,7 @@ LightingSettings:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   serializedVersion: 3
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 0
   m_RealtimeEnvironmentLighting: 1

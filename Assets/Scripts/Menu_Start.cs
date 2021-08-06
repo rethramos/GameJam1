@@ -9,7 +9,7 @@ public class Menu_Start : MonoBehaviour
     public void Start_Game()
     {
         eb.PostEvent(EventNames.LevelEvents.ON_LEVEL_START);
-        SceneManager.LoadScene("Maze");
+        SceneManager.LoadScene("SceneGab");
         Debug.Log("called here: " + GameStatistics.GetCurrentLevelDuration());
         Debug.Log("ex: " + GameStatistics.CurrentLevel);
     }
