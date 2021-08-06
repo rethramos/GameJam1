@@ -14,22 +14,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private Transform startTransform;
-<<<<<<< HEAD:Assets/Scripts/PlayerMovement.cs
     //[SerializeField] private GameObject image;
 
     private Inventory inventory = Inventory.Instance;
-=======
-    [SerializeField] private GameObject image;
->>>>>>> main:Assets/PlayerMovement.cs
     public int count = 0;
 
     private Vector3 velocity;
     private bool isGrounded;
     private EventBroadcaster eb = EventBroadcaster.Instance;
-<<<<<<< HEAD:Assets/Scripts/PlayerMovement.cs
-=======
-    private Inventory inventory = Inventory.Instance;
->>>>>>> main:Assets/PlayerMovement.cs
 
     // Start is called before the first frame update
     void Start()
@@ -41,21 +33,12 @@ public class PlayerMovement : MonoBehaviour
     //IEnumerator Wait()
     //{
     //    if (count == 1)
-<<<<<<< HEAD:Assets/Scripts/PlayerMovement.cs
       //  {
         //    Debug.Log("Wait");
           //  yield return new WaitForSeconds(2);
             //image.SetActive(false);
        // }
    // }
-=======
-    //    {
-    //        Debug.Log("Wait");
-    //        yield return new WaitForSeconds(2);
-    //        image.SetActive(false);
-    //    }
-    //}
->>>>>>> main:Assets/PlayerMovement.cs
 
     // Implement this OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn
     private void OnDrawGizmos()
@@ -81,23 +64,12 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("from ontrigger Powerup");
             Debug.Log("Freeze found");
             other.gameObject.SetActive(false);
-<<<<<<< HEAD:Assets/Scripts/PlayerMovement.cs
 
             eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
 
         }
         Debug.Log("collided with: " + other);
     }
-=======
-            
-            eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
-            
-        }
-        Debug.Log("collided with: " + other);
-    }
-
-
->>>>>>> main:Assets/PlayerMovement.cs
 
 
 
