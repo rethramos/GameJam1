@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneReth.unity
     guid: b03d026e4d1b3bc4d85c51e1dd7d357c
   - enabled: 1
-    path: Assets/Scenes/ScenePau.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2e445121c0aedf448a0bc1a3d607c38b
   m_configObjects: {}
