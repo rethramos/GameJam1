@@ -39941,6 +39941,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 35a80721181006b41a9a1f03dd6ac05f, type: 2}
+    - target: {fileID: 19800002, guid: 339ec13e94b70ca469275f6f7e29bac3, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 339ec13e94b70ca469275f6f7e29bac3, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 19900000, guid: 339ec13e94b70ca469275f6f7e29bac3, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
