@@ -8,5 +8,6 @@ public class Menu_BackToMenu : MonoBehaviour
     public void NextScene()
     {
         SceneManager.LoadScene("Final_MainMenu");
+        Debug.Log("clicked backt o");
     }
 }
