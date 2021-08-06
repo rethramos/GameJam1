@@ -14,8 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private Transform startTransform;
-    [SerializeField] private GameObject image;
-    public int count = 0;
+    [SerializeField] private Transform mazeEnd;
+    //[SerializeField] private GameObject image;
+    //public int count = 0;
 
     private Vector3 velocity;
     private bool isGrounded;
@@ -81,6 +82,10 @@ public class PlayerMovement : MonoBehaviour
             other.gameObject.SetActive(false);
 
             eb.PostEvent(EventNames.PowerupEvents.ON_JUMP_COLLECT);
+        } else if (other.CompareTag("Finish"))
+        {
+            Debug.Log("finish point collided");
+            eb.PostEvent(EventNames.LevelEvents.ON_LEVEL_END);
         }
         Debug.Log("collided with: " + other);
     }

@@ -20,8 +20,9 @@ public class Inventory
         eb.AddObserver(EventNames.PowerupEvents.ON_FREEZE_USE, OnFreezeUse);
         eb.AddObserver(EventNames.PowerupEvents.ON_HINT_USE, OnHintUse);
 
+        eb.AddObserver(EventNames.LevelEvents.ON_LEVEL_END, OnLevelEnd);
     }
-    
+
 
     public static Inventory Instance
     {
@@ -64,6 +65,13 @@ public class Inventory
     private void OnHintUse()
     {
         HintCounter--;
+    }
+
+    private void OnLevelEnd()
+    {
+        JumpCounter = 0;
+        FreezeCounter = 0;
+        HintCounter = 0;
     }
 
     public int FreezeCounter { get; set; }
