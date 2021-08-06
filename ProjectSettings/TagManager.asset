@@ -9,6 +9,7 @@ TagManager:
   - PowerUp
   - Powerup:Hint
   - Powerup:Jump
+  - Finish:Game
   layers:
   - Default
   - TransparentFX

@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Menu_Start : MonoBehaviour
 {
+    private EventBroadcaster eb = EventBroadcaster.Instance;
     public void Start_Game()
     {
-        SceneManager.LoadScene("SceneReth");
+        eb.PostEvent(EventNames.LevelEvents.ON_LEVEL_START);
+        SceneManager.LoadScene("SceneGab");
+        Debug.Log("called here: " + GameStatistics.GetCurrentLevelDuration());
+        Debug.Log("ex: " + GameStatistics.CurrentLevel);
     }
 }
