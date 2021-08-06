@@ -22,6 +22,7 @@ public class EnemyD : MonoBehaviour
     private void Awake()
     {
         eb.AddObserver(EventNames.PowerupEvents.ON_FREEZE_USE, OnFreezeUse);
+
     }
 
     // This function is called when the MonoBehaviour will be destroyed
