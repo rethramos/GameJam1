@@ -7,6 +7,6 @@ public class Menu_Start : MonoBehaviour
 {
     public void Start_Game()
     {
-        SceneManager.LoadScene("SceneReth");
+        SceneManager.LoadScene("Maze");
     }
 }

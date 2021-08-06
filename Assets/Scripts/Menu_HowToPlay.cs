@@ -7,6 +7,6 @@ public class Menu_HowToPlay : MonoBehaviour
 {
     public void NextScene()
     {
-        SceneManager.LoadScene("HowToPlay");
+        SceneManager.LoadScene("Final_Rules");
     }
 }
