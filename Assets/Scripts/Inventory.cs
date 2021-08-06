@@ -21,7 +21,7 @@ public class Inventory
         eb.AddObserver(EventNames.PowerupEvents.ON_HINT_USE, OnHintUse);
 
     }
-
+    
 
     public static Inventory Instance
     {

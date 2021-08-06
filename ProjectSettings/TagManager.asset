@@ -5,9 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Powerup
-  - PowerUp
   - Powerup:Freeze
+  - PowerUp
   - Powerup:Hint
   - Powerup:Jump
   layers:
@@ -17,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
