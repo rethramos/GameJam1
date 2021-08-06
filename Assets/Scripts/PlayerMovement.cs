@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private Transform startTransform;
     [SerializeField] private GameObject image;
+
+    private Inventory inventory = Inventory.Instance;
     public int count = 0;
 
     private Vector3 velocity;
@@ -57,18 +59,14 @@ public class PlayerMovement : MonoBehaviour
             transform.position = startTransform.position;
             controller.enabled = true;
         }
-        else if (other.CompareTag("Powerup"))
+        else if (other.CompareTag("Powerup:Freeze"))
         {
             Debug.Log("from ontrigger Powerup");
-            if (other.GetComponent<FreezePowerupController>() != null)
-            {
-                Debug.Log("Freeze found");
-                eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
-            }
-            else
-            {
-                Debug.Log("Freeze not found");
-            }
+            Debug.Log("Freeze found");
+            other.gameObject.SetActive(false);
+
+            eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
+
         }
         Debug.Log("collided with: " + other);
     }
@@ -101,5 +99,33 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
+    }
+
+    // Update is called every frame, if the MonoBehaviour is enabled
+    private void Update()
+    {
+        ListenToPowerupUse();
+    }
+
+
+    // powerup mapping: 1 - jump, 2 - freeze, 3 - hint
+    private void ListenToPowerupUse()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && inventory.JumpCounter > 0)
+        {
+            Debug.Log("1 is pressed");
+            eb.PostEvent(EventNames.PowerupEvents.ON_JUMP_USE);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2) && inventory.FreezeCounter > 0)
+        {
+            Debug.Log("2 is pressed");
+            eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_USE);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && inventory.HintCounter > 0)
+        {
+            Debug.Log("3 is pressed");
+            eb.PostEvent(EventNames.PowerupEvents.ON_HINT_USE);
+
+        }
     }
 }

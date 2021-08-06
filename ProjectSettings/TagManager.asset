@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Powerup
   - PowerUp
+  - PowerUpArrow
+  - Powerup:Freeze
   layers:
   - Default
   - TransparentFX
