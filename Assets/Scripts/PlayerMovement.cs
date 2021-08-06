@@ -67,6 +67,13 @@ public class PlayerMovement : MonoBehaviour
             eb.PostEvent(EventNames.PowerupEvents.ON_FREEZE_COLLECT);
             
         }
+        else if (other.CompareTag("Powerup:Hint"))
+        {
+            Debug.Log("from powerup hint");
+            other.gameObject.SetActive(false);
+
+            eb.PostEvent(EventNames.PowerupEvents.ON_HINT_COLLECT);
+        }
         Debug.Log("collided with: " + other);
     }
 
