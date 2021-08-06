@@ -23,7 +23,6 @@ public class Inventory
         eb.AddObserver(EventNames.LevelEvents.ON_LEVEL_END, OnLevelEnd);
     }
 
-
     public static Inventory Instance
     {
         get
