@@ -41,6 +41,7 @@ public static class GameStatistics
 
     public static double GetDuration(int level)
     {
+        Debug.Log(level);
         Debug.Log("from getduration: " + (_levelDurations[level, 1] - _levelDurations[level, 0]).TotalSeconds);
         return (_levelDurations[level, 1] - _levelDurations[level, 0]).TotalSeconds;
     }
