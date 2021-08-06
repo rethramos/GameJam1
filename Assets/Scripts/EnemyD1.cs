@@ -8,8 +8,6 @@ public class EnemyD1 : MonoBehaviour
     public Transform target;
     public Transform target1;
     public float speed;
-    private EventBroadcaster eb = EventBroadcaster.Instance;
-    private bool isFrozen;
 
     bool change = true;
     // Start is called before the first frame update
@@ -17,19 +15,6 @@ public class EnemyD1 : MonoBehaviour
     {
 
     }
-
-    private void Awake()
-    {
-        eb.AddObserver(EventNames.PowerupEvents.ON_FREEZE_USE, OnFreezeUse);
-
-    }
-
-    // This function is called when the MonoBehaviour will be destroyed
-    private void OnDestroy()
-    {
-        eb.RemoveActionAtObserver(EventNames.PowerupEvents.ON_FREEZE_USE, OnFreezeUse);
-    }
-
 
     // Update is called once per frame
     void FixedUpdate()
@@ -58,24 +43,6 @@ public class EnemyD1 : MonoBehaviour
             change = true;
         }
 
-    }
-
-    private void OnFreezeUse()
-    {
-        Debug.Log("monster on freeze use");
-        if (!isFrozen) StartCoroutine(Freeze());
-    }
-
-    private IEnumerator Freeze()
-    {
-        float def = speed;
-        speed = 0f;
-        Debug.Log("monsters freezed.");
-        isFrozen = true;
-        yield return new WaitForSeconds(5f);
-        speed = def;
-        Debug.Log("monsters unfreezed.");
-        isFrozen = false;
     }
 
 
